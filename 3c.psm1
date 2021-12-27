@@ -100,5 +100,19 @@ function Get-SmartTrades {
     makeAuthGetRequestAllPaged -urlpart '/public/api/v2/smart_trades'
 }
 
+function Get-SmartTrade {
+    param(
+        [Parameter(Mandatory)][string]$id
+    )
+    makeRawAuthGetRequest -urlpart "/public/api/v2/smart_trades/$id"
+}
 
-Export-ModuleMember Get-SmartTrades, Get-Pingpong, Get-ServerTime, Set-Authentication
+function Get-TradeStatusIsActive {
+    param(
+        [Parameter(Mandatory)][string]$status
+    )
+    $status -notmatch '^(finished|cancelled|stop_loss_finished|panic_sold|failed)'
+}
+
+
+Export-ModuleMember Get-SmartTrades, Get-SmartTrade, Get-Pingpong, Get-ServerTime, Set-Authentication, Get-TradeStatusIsActive
