@@ -107,6 +107,13 @@ function Get-SmartTrade {
     makeRawAuthGetRequest -urlpart "/public/api/v2/smart_trades/$id"
 }
 
+function Get-SmartTradeTrades {
+    param(
+        [Parameter(Mandatory)][string]$id
+    )
+    makeRawAuthGetRequest -urlpart "/public/api/v2/smart_trades/$id/trades"
+}
+
 function Get-TradeStatusIsActive {
     param(
         [Parameter(Mandatory)][string]$status
@@ -115,4 +122,4 @@ function Get-TradeStatusIsActive {
 }
 
 
-Export-ModuleMember Get-SmartTrades, Get-SmartTrade, Get-Pingpong, Get-ServerTime, Set-Authentication, Get-TradeStatusIsActive
+Export-ModuleMember Get-SmartTrades, Get-SmartTrade, Get-SmartTradeTrades, Get-Pingpong, Get-ServerTime, Set-Authentication, Get-TradeStatusIsActive
